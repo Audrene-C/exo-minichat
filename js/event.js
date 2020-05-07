@@ -5,15 +5,22 @@ async function getMessages(url) {
         return `
             <div>
                 <span class="created_at">${message.created_at} </span>
-                <span class="nickname">${message.nickname} : </span>
+                <span class="nickname" style="color:${message.color};">${message.nickname} : </span>
                 <span class="message">${message.message}</span>
             </div>
+        `
+    }).join('');
+    const htmlList = result.map(function(message) {
+        return `
+            <li style="color:${message.color};">${message.nickname}</li>
         `
     }).join('');
 
     const chat = document.querySelector('#chat');
     chat.innerHTML = html;
     chat.scrollTop = chat.scrollHeight;
+    const list = document.querySelector('#users_list');
+    list.innerHTML = htmlList;
 }
 
 getMessages('./processing.php');
@@ -43,3 +50,18 @@ function postMessage(event) {
 
     document.querySelector('#chat-form').addEventListener('submit', postMessage);
 }
+
+async function getUsersList(url) {
+    const response = await fetch(url);
+    const result = await response.json();
+    const html = result.reverse().map(function(user) {
+        return `
+            <li style="color:${user.color};">${user.nickname}</li>
+        `
+    }).join('');
+
+    const list = document.querySelector('#users_list');
+    list.innerHTML = html;
+}
+
+getUsersList('./processing.php?task=list');

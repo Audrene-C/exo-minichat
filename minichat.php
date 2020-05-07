@@ -21,16 +21,15 @@ include_once './partials/connexion.php';
             
             <div class="col-9" id="chat"></div>
 
-            <div class="col-3" id="users_list">
-                <ul>
-                    <?php include './partials/users-list.php'; ?>
-                </ul>
+            <div class="col-3" >
+            <ul id="users_list">
+            </ul>
             </div>
 
         </div>
 
     </div>
-
+    
     <div class="container-fluid d-flex">
 
         <div id="login" class="col-3">
@@ -53,8 +52,9 @@ include_once './partials/connexion.php';
         
     </div>
 
-
-<script src="./js/event.js"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js<?=strtotime("now")?>"></script>
+    <script src="./js/event.js?<?=strtotime("now")?>"></script>
 
     </body>
 </html>
