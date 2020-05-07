@@ -17,3 +17,29 @@ async function getMessages(url) {
 }
 
 getMessages('./processing.php');
+
+function postMessage(event) {
+    //stopper le déroulé classique de l'event POST
+    event.preventDefault();
+
+    //recup les données du formulaire
+    const nickname = document.querySelector('#nickname');
+    const message = document.querySelector('#message');
+
+    //conditionner ces données
+    const data = new FormData;
+    data.append('nickname', nickname.value);
+    data.append('message', message.value);
+
+    //configurer une requête AJAX en POST et envoyer les données
+    const requeteAjax = new XMLHttpRequest();
+    requeteAjax.open('POST', 'processing.php?task=write');
+    requeteAjax.onload = function() {
+        //on vide le champ après avoir envoyé un message
+        content.value = '';
+        content.focus();
+        getMessages();
+    }
+
+    document.querySelector('#chat-form').addEventListener('submit', postMessage);
+}

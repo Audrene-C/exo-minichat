@@ -41,11 +41,11 @@ include_once './partials/connexion.php';
             <div class="container-fluid d-flex" id="chat-form">    
                 <div class="col-4">
                     <label for="nickname">Nickname :</label>
-                    <input type="text" name="nickname" value="<?=$_COOKIE["nickname"];?>" required>
+                    <input type="text" name="nickname" id="nickname" value="<?=$_COOKIE["nickname"];?>" required>
                 </div>
                 <div id="div_message" class="col-7">
                     <label for="message">Your message :</label>
-                    <input type="text" name="message" required>
+                    <input type="text" name="message" id="message" required>
                 </div>
                 <input type="submit" value="Send" id="send" class="col-1">
             </div>
