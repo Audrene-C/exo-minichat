@@ -65,7 +65,6 @@ function postMessage() {
 
         if ($userExists) {
             $userId = $userExists['id'];
-            echo "oui";
         }
         else {
             $insertNewUser = $bdd->prepare('INSERT INTO users SET nickname = :nickname, created_at = NOW(), ip_address = :ip_address, color = :color');
@@ -75,7 +74,6 @@ function postMessage() {
                 "color" => RandomColor::one()
             ));
             $userId = $bdd->lastInsertId();
-            echo "non";
         }
         
         
@@ -84,7 +82,7 @@ function postMessage() {
                     "user_id" => $userId,
                     "message" => $message,
                     "ip_address" => getIp()
-                )); echo "donc?";
+                ));
         
         //on créé le cookie pour récupérer le pseudo
         setcookie( "nickname", $nickname, strtotime( '+2 days' ) );
