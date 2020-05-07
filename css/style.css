@@ -1,0 +1,36 @@
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+#chat {
+    border: 1px solid red;
+}
+
+#users_list {
+    border: 1px solid green;
+}
+
+#login {
+    border: 1px solid pink;
+}
+
+form {
+    border: 1px solid blue;
+}
+
+.row {
+    width: 100%;
+}
+
+.container-fluid {
+    justify-content: space-around;
+}
+
+#chat-form {
+    justify-content: stretch;
+}
+
+label, input {
+    padding-top: 5px;
+}
